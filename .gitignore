@@ -1,0 +1,6 @@
+build/
+.build/
+vendor/
+.env
+benchmark-report.txt
+Support/icon/face-source.jpg
