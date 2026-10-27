@@ -149,3 +149,9 @@ let avatar = composite(size: M, faceHeightFraction: 0.62, faceCenterY: 0.50,
                        background: gradient(M, CIColor(red: 0.30, green: 0.55, blue: 1.0), CIColor(red: 0.42, green: 0.18, blue: 0.78)))
 try png(render(avatar, size: Int(M))).write(to: outDir.appendingPathComponent("menubar-face.png"))
 print("wrote", icns.path, "and menubar-face.png")
+
+// 5. Android adaptive icon foreground (108dp canvas, 72dp visible): transparent cutout whose shoulders reach the bottom edge.
+let A: CGFloat = 432
+let androidFg = composite(size: A, faceHeightFraction: 0.38, faceCenterY: 0.40, background: CIImage.empty())
+try png(render(androidFg, size: Int(A))).write(to: outDir.appendingPathComponent("android-foreground.png"))
+print("wrote android-foreground.png")

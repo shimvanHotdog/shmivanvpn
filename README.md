@@ -29,3 +29,17 @@ Set this up in **Settings → Split Tunneling**:
 - **Local network always direct** and **Block ads** are toggles.
 
 Settings are stored in `~/Library/Application Support/shmivanvpn/`. Logs are in **Settings → Logs**.
+
+## Android
+
+`android/` is a Jetpack Compose app with a Material 3 Expressive design. It runs the same Xray core through Android's VpnService, using [AndroidLibXrayLite](https://github.com/2dust/AndroidLibXrayLite). On wide screens, such as foldable inner displays and tablets, it switches to a navigation rail and two-pane layouts.
+
+```bash
+brew install openjdk@21 && brew install --cask android-commandlinetools
+sdkmanager "platform-tools" "platforms;android-37.0" "build-tools;37.0.0"
+./build-android.sh install
+```
+
+`./build-android.sh` builds signed APKs into `android/dist/`, and the `install` argument also installs the arm64 APK on the phone connected over adb. On the first build it creates a signing key at `android/keystore.jks`. Keep a backup of that file, because every update has to be signed with the same key.
+
+To add a server, open a `vless://` link on the phone, for example by scanning the QR code in 3x-ui, or use **Paste link**. Per-app split tunneling uses Android's own app allow and deny lists. A Quick Settings tile toggles the VPN.

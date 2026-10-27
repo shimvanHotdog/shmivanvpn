@@ -1,0 +1,10 @@
+.gradle/
+build/
+app/build/
+local.properties
+app/libs/*.aar
+app/src/main/assets/*.dat
+keystore.jks
+keystore.properties
+build.nosync/
+app/build.nosync/
